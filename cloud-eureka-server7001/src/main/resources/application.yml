@@ -1,0 +1,38 @@
+server:
+  port: 7001
+
+#eureka:
+#  instance:
+#    hostname: localhost #eureka服务端的实例名称
+#  client:
+#    register-with-eureka: false #false表示不向注册中心注册自己
+#    #false表示自己端就是注册中心，我的职责就是维护服务实例，并不需要检索服务
+#    fetch-registry: false
+#    service-url:
+#      #设置与eureka server交互的地址查询服务和注册都需要依赖这个地址
+#      defaultZone: http://127.0.0.1:7001/eureka/
+#  client:
+#    registerWithEureka: true
+#    fetchRegistry: true
+#    serviceUrl:
+#      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/
+eureka:
+  instance:
+    hostname: eureka7001.com
+  client:
+    # 不向注册中心注册自己
+    register-with-eureka: false
+    # 取消检索服务
+    fetch-registry: false
+    # 启动独立模式的Eureka server
+    # 关闭客户端行为，这样它就不会不断尝试并无法到达它的对等端
+    # defaultZone 默认使用 http://localhost:8761/eureka/ 地址
+    # 使 serviceUrl 指向与本地实例相同的主机
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+  server:
+    # 开启注册中心的保护机制，默认是开启
+    enable-self-preservation: true
+    # 设置保护机制的阈值，默认是0.85
+    renewal-percent-threshold: 0.5
+
